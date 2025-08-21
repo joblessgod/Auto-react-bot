@@ -1,0 +1,21 @@
+{
+  "name": "auto-react-bot",
+  "version": "1.0.0",
+  "description": "React to all new msg automatically in a particular channel",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js --trace-warnings",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "auto-react-dc-bot",
+    "JobLessGod"
+  ],
+  "author": "JobLessGod",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "discord.js": "^14.22.0",
+    "dotenv": "^17.2.1"
+  }
+}

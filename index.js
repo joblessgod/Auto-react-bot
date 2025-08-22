@@ -1,30 +1,30 @@
-const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
+const { Client, GatewayIntentBits } = require("discord.js");
 require("dotenv").config();
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMessageReactions,
+  ],
 });
-const channels = ["FIRST_CHANNEL_ID", "SECOND_CHANNEL_ID"];
+
+const channel = "1408095039154028705"; // channel id
 
 client.on("messageCreate", async msg => {
   if (msg.author.bot) return;
 
-  if (channels.includes(msg.channel.id)) {
+  if (channel.includes(msg.channel.id)) {
     try {
-      await msg.react("PASTE YOUR EMOJI ID HERE"); //example: <:0_:1288609400528834570>
-      console.log(`Reacted to message ${msg.id} with emoji in channel`);
+      await msg.react("<:owner:1408425230845612112>");
+      console.log("Message Reacted");
     } catch (error) {
-      console.error("Error while reactiong: " + error);
+      console.error("Error while reaction: " + error);
     }
   }
 });
 
-console.log(`Logging in...`);
 client.login(process.env.DISCORD_TOKEN);
-client.on("clientReady", function () {
-  client.user.setActivity({
-    name: "Dev by JobLessGod",
-    type: ActivityType.Custom,
-  });
-  console.log(`Logged in as ${client.user.tag}!`);
+client.on("clientReady", async () => {
+  console.log("Logged in with " + client.user.tag);
 });
